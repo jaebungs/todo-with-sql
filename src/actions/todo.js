@@ -36,18 +36,22 @@ const deleteTodo = async (id) => {
         })
 }
 
-const updateTodo = async (todo, id) => {
-    // await fetch('http://localhost:4000/', {
-    //     method: 'put',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(todo, id)
-    // })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //     })
+const updateTodo = async (todo) => {
+    await fetch('http://localhost:4000/update', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: todo.id,
+            title: todo.title,
+            description: todo.description
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
 }
 
 export { addTodo, deleteTodo, updateTodo };

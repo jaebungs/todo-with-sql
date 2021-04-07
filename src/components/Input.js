@@ -25,6 +25,7 @@ const Input = ({ addTodoState }) => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         const addedTodo = await addTodo(input); // HTTP reqeust post new todo
+        
         addTodoState(addedTodo); //Add todo to state
         setFocusEl();
         setInput(stateDefault);
