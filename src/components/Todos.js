@@ -3,7 +3,7 @@ import Todo from './Todo';
 import { deleteTodo, updateTodo } from '../actions/todo';
 
 const Todos = ({ todos, setTodos }) => {
-    const [isEdit, setIsEdit] = useState(false);
+    const [isEdit, setIsEdit] = useState(false); //Edit input appears on true.
     const [editedTodo, setEditedTodo] = useState('');
 
     const handleDeleteTodo = (id) => {
@@ -15,6 +15,10 @@ const Todos = ({ todos, setTodos }) => {
     const handleEditSubmit = (e) => {
         e.preventDefault();
         updateTodo(editedTodo); //HTTP PATCH request.
+        const newTodos = todos.filter((todo)=>{
+            return todo.id !== editedTodo.id
+        });
+        setTodos([editedTodo, ...newTodos]);
         
         setEditedTodo('');
         setIsEdit(false);

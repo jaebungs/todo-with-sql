@@ -1,7 +1,7 @@
-const url = 'http://localhost:4000/'
+const url = 'http://localhost:4000'
+     // 'https://todo-server-to-learn-sql.herokuapp.com'
 
 const addTodo = async (input) => {
-     // 'https://todo-server-to-learn-sql.herokuapp.com'
      let addedTodo;
 
      await fetch(url, {
@@ -19,11 +19,12 @@ const addTodo = async (input) => {
         addedTodo = data;
     })
     .catch((err)=>console.log(err))
+    
     return addedTodo
 }
 
 const deleteTodo = async (id) => {
-    await fetch('http://localhost:4000/delete', {
+    await fetch(`http://localhost:4000/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

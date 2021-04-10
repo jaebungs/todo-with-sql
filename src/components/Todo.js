@@ -4,7 +4,7 @@ const Todo = ({ todos, handleDeleteTodo, handleEditTodoState }) => {
 
     return (
         <div>
-            {todos && todos?.map((todo, index)=>{
+            {todos?.map((todo, index)=>{
                 return (
                 <div className="todo" id={todo.id} key={`todo${index}`}>
                     <div className="todo__title">
